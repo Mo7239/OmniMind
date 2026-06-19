@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  omnimind:
+    build: .
+    container_name: omnimind_api
+    ports:
+      - "8000:8000"
+    volumes:
+
+      - ./data/chroma:/app/data/chroma
+      - C:\Users\FreeComp\.cache\huggingface\hub:/root/.cache/huggingface/hub
+    environment:
+      - CHROMA_PERSIST_DIR=/app/data/chroma
+      - SHORT_TERM_MAX_MESSAGES=20
+      - LONG_TERM_COLLECTION_NAME=omnimind_memory
+      - EMBEDDING_MODEL=all-MiniLM-L6-v2
+      - RERANKER_MODEL=cross-encoder/ms-marco-MiniLM-L-6-v2
+      - HF_HOME=/root/.cache/huggingface
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+      - OLLAMA_MODEL=mistral
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: always

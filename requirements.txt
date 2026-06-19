@@ -1,0 +1,33 @@
+# LLM
+ollama
+
+# Vector DB
+chromadb
+
+# Embeddings & ML
+sentence-transformers
+
+# Environment
+python-dotenv
+
+# Utilities
+pydantic
+pydantic-settings
+
+# RAG
+pypdf
+python-docx
+unstructured
+langchain-text-splitters
+
+#chunking
+langchain-text-splitters
+
+#app
+fastapi
+uvicorn
+python-multipart
+
+aiofiles
+
+rank-bm25
