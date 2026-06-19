@@ -1,126 +1,186 @@
 # 🧠 OmniMind — Personal AI Research Assistant
 
-OmniMind is a production-ready AI assistant that combines RAG, long-term memory,
-and a multi-agent system to answer questions from your documents intelligently.
+> A production-ready AI assistant that combines **RAG**, **Long-Term Memory**,
+> and a **Multi-Agent Architecture** to answer questions from your documents intelligently.
 
 ---
 
 ## ✨ Features
 
-- 📄 **Document Ingestion** — Upload PDF, TXT, DOCX files
-- 🔍 **RAG Pipeline** — Semantic search over your documents
-- 🧠 **Memory System** — Short-term (conversation) + Long-term (vector DB)
-- 🤖 **Multi-Agent System** — Researcher, Summarizer, FactChecker
-- ⚡ **FastAPI Backend** — REST API with auto docs
-- 💬 **ChatGPT-like UI** — Clean chat interface
-- 🐳 **Dockerized** — One command to run everything
-- 🔓 **100% Open Source** — Runs locally with Ollama
+- 📄 **Document Ingestion** — Upload PDF, TXT, and DOCX files
+- 🔍 **RAG Pipeline** — Semantic search over your knowledge base
+- 🧠 **Memory System** — Short-term + Long-term memory
+- 🤖 **Multi-Agent System** — Researcher, Summarizer, FactChecker, Orchestrator
+- ⚡ **FastAPI Backend** — High-performance REST API
+- 💬 **Modern Chat UI** — Clean ChatGPT-style interface
+- 🐳 **Docker Support** — Run everything with a single command
+- 🔓 **Fully Open Source** — Runs locally using Ollama
 
 ---
 
-## 🏗️ Project Structure
+# 🏗️ Architecture
 
-\`\`\`
-
+```text
 omnimind/
-├── core/               # Config & Logger
-├── models/             # LLM abstraction (Ollama)
-├── memory/             # Short-term & Long-term memory
-├── rag/                # Document loader, chunker, embedder, retriever
-├── agents/             # Researcher, Summarizer, FactChecker, Orchestrator
-├── api/                # FastAPI routes
-├── frontend/           # HTML, CSS, JS Chat UI
+│
+├── core/
+│   ├── config.py
+│   └── logger.py
+│
+├── models/
+│   └── ollama_model.py
+│
+├── memory/
+│   ├── short_term.py
+│   └── long_term.py
+│
+├── rag/
+│   ├── loader.py
+│   ├── chunker.py
+│   ├── embedder.py
+│   └── retriever.py
+│
+├── agents/
+│   ├── researcher.py
+│   ├── summarizer.py
+│   ├── fact_checker.py
+│   └── orchestrator.py
+│
+├── api/
+│   └── main.py
+│
+├── frontend/
+│   ├── index.html
+│   ├── style.css
+│   └── app.js
+│
 ├── docker-compose.yml
 ├── Dockerfile
-└── requirements.txt
-
-\`\`\`
+├── requirements.txt
+└── README.md
+```
 
 ---
 
-## 🚀 Quick Start
+# 🚀 Quick Start
 
-### Option 1: Local
+## Option 1 — Local Installation
 
-**1. Clone the repo**
-\`\`\`
-bash
-git clone https://github.com/yourusername/omnimind.git
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/Mo7239/OmniMind.git
+
 cd omnimind
+```
 
-\`\`\`
+### 2️⃣ Create a Virtual Environment
 
-**2. Create virtual environment**
-\`\`\`bash
+#### Windows
+
+```bash
 python -m venv .venv
-.venv\Scripts\activate  # Windows
-source .venv/bin/activate  # Linux/Mac
-\`\`\`
 
-**3. Install dependencies**
-\`\`\`bash
+.venv\Scripts\activate
+```
+
+#### Linux / macOS
+
+```bash
+python3 -m venv .venv
+
+source .venv/bin/activate
+```
+
+### 3️⃣ Install Dependencies
+
+```bash
 pip install -r requirements.txt
-\`\`\`
+```
 
-**4. Setup environment**
-\`\`\`bash
+### 4️⃣ Configure Environment Variables
+
+#### Linux / macOS
+
+```bash
 cp .env.example .env
-\`\`\`
+```
 
-**5. Pull Ollama model**
-\`\`\`bash
+#### Windows (PowerShell)
+
+```powershell
+Copy-Item .env.example .env
+```
+
+### 5️⃣ Pull the Ollama Model
+
+```bash
 ollama pull mistral
-\`\`\`
+```
 
-**6. Run the app**
-\`\`\`bash
+### 6️⃣ Run the Application
+
+```bash
 uvicorn api.main:app --reload --port 8000
-\`\`\`
+```
+
+Open:
+
+```text
+http://localhost:8000
+```
 
 ---
 
-### Option 2: Docker
+## Option 2 — Docker
 
-\`\`\`bash
-docker-compose up --build
-\`\`\`
+```bash
+docker compose up --build
+```
 
-Open your browser at `http://localhost:8000`
+Then open:
 
----
-
-## 🤖 Agents
-
-| Agent | Trigger Keywords | Role |
-|-------|-----------------|------|
-| 🔍 Researcher | any question | Searches documents and answers |
-| 📝 Summarizer | summarize, تلخيص | Summarizes conversation |
-| ✅ FactChecker | verify, تحقق, fact | Verifies claims against documents |
+```text
+http://localhost:8000
+```
 
 ---
 
-## 🛠️ Tech Stack
+# 🤖 Agent System
+
+| Agent | Responsibility |
+|---------|---------|
+| 🔍 Researcher | Retrieves relevant information from documents |
+| 📝 Summarizer | Generates concise summaries |
+| ✅ FactChecker | Verifies claims against sources |
+| 🎯 Orchestrator | Coordinates all agents and workflow |
+
+---
+
+# 🛠️ Tech Stack
 
 | Layer | Technology |
-|-------|-----------|
-| LLM | Ollama + Mistral 7B |
+|---------|---------|
+| LLM | Ollama + Mistral |
 | Embeddings | all-MiniLM-L6-v2 |
-| Vector DB | ChromaDB |
+| Vector Database | ChromaDB |
 | Backend | FastAPI |
 | Frontend | HTML, CSS, JavaScript |
-| Container | Docker + docker-compose |
+| Containerization | Docker |
+| Language | Python 3.11+ |
 
 ---
 
-## 📡 API Endpoints
+# 📡 API Endpoints
 
 | Method | Endpoint | Description |
-|--------|---------|-------------|
-| GET | `/health` | Health check |
-| POST | `/chat` | Send a message |
-| GET | `/history` | Get chat history |
-| DELETE | `/history` | Clear chat history |
-| POST | `/upload` | Upload a document |
+|----------|----------|----------|
+| GET | `/health` | Health Check |
+| POST | `/chat` | Send a Chat Message |
+| GET | `/history` | Retrieve Chat History |
+| DELETE | `/history` | Clear Chat History |
+| POST | `/upload` | Upload Documents |
 
 ---
+
 
