@@ -21,6 +21,7 @@ and a multi-agent system to answer questions from your documents intelligently.
 ## 🏗️ Project Structure
 
 \`\`\`
+
 omnimind/
 ├── core/               # Config & Logger
 ├── models/             # LLM abstraction (Ollama)
@@ -32,6 +33,7 @@ omnimind/
 ├── docker-compose.yml
 ├── Dockerfile
 └── requirements.txt
+
 \`\`\`
 
 ---
@@ -41,9 +43,11 @@ omnimind/
 ### Option 1: Local
 
 **1. Clone the repo**
-\`\`\`bash
+\`\`\`
+bash
 git clone https://github.com/yourusername/omnimind.git
 cd omnimind
+
 \`\`\`
 
 **2. Create virtual environment**
